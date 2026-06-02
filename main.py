@@ -20,4 +20,10 @@ TASKS = [
     "Study Block",
     "Focus Time",
     "Gym",
+    "Lunch",
+    "Coding",
+    "Evening Study",
+    "Church",
 ]
+
+GH = []
