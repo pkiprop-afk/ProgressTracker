@@ -95,3 +95,21 @@ def init_db():
                 tasks TEXT NOT NULL DEFAULT '[]'
             )
         """)
+
+def load_day(ds: str) -> list[str]:
+    with _conn() as c:
+        row = c.execute(
+            "INSERT OR REPLACE INTO completions(date, tasks) VALUES(?,?)",
+            (ds, json.dumps(tasks)),
+        )
+
+
+def all_completions() -> dict[str, int]:
+    with _conn() as c:
+        rows = c.execute("SELECT date, tasks FROM completions").fetchall()
+    return {ds: len(json.loads(t)) for ds, t in rows if json.loads(t)}
+
+# HELPERS
+def level(n: int) -> int:
+    if n == 0: return 0
+    if n <= 2: return 1
