@@ -19,5 +19,5 @@ TASKS = [
     "Trading Sessions",
     "Study Block",
     "Focus Time",
-    
+    "Gym",
 ]
