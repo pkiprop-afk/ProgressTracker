@@ -26,4 +26,5 @@ TASKS = [
     "Church",
 ]
 
-GH = []
+GH = ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"]
+LEVELS = ["⬜ Rest", "🟩 Light", "🟨 Active", "🟧 Grind", "🔴 Peak"]
