@@ -82,6 +82,7 @@ HISTORY: dict[str, int] = {
 }
 
 # DATABASE
+# DATABASE
 DB_PATH = "tracker.db"
 
 def _conn():
@@ -99,10 +100,19 @@ def init_db():
 def load_day(ds: str) -> list[str]:
     with _conn() as c:
         row = c.execute(
-            "INSERT OR REPLACE INTO completions(date, tasks) VALUES(?,?)",
-            (ds, json.dumps(tasks)),
-        )
+            "SELECT tasks FROM completions WHERE date = ?", 
+            (ds,)
+        ).fetchone()
+    if row:
+        return json.loads(row[0])
+    return []
 
+def save_day(ds: str, checked_tasks: list[str]):
+    with _conn() as c:
+        c.execute(
+            "INSERT OR REPLACE INTO completions(date, tasks) VALUES(?, ?)",
+            (ds, json.dumps(checked_tasks))
+        )
 
 def all_completions() -> dict[str, int]:
     with _conn() as c:
