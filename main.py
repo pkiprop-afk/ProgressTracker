@@ -18,5 +18,6 @@ TASKS = [
     "Pre-Market Prep",
     "Trading Sessions",
     "Study Block",
+    "Focus Time",
     
 ]
