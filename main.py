@@ -83,3 +83,15 @@ HISTORY: dict[str, int] = {
 
 # DATABASE
 DB_PATH = "tracker.db"
+
+def _conn():
+    return sqlite3.connect(DB_PATH)
+
+def init_db():
+    with _conn() as c:
+        c.execute(""" 
+            CREATE TABLE IF NOT EXISTS completions (
+                date TEXT PRIMARY KEY,
+                tasks TEXT NOT NULL DEFAULT '[]'
+            )
+        """)
