@@ -11,3 +11,12 @@ st.set_page_config(
     layout = "wide",
     initial_sidebar_state= "collapsed"
 )
+
+# CONSTANTS
+TASKS = [
+    "Bible Study",
+    "Pre-Market Prep",
+    "Trading Sessions",
+    "Study Block",
+    
+]
