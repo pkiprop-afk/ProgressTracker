@@ -117,3 +117,14 @@ def level(n: int) -> int:
     if n <= 9: return 3
     return 4
 
+def activity_map() -> dict[str, int]:
+    am = dict(HISTORY)
+    am.update(all_completions()) # checked tasks override calendar counts
+    return am
+
+def stats(am: dict[str, int]) -> dict:
+    today = date.today()
+    
+    streak = 0
+    d = today
+    
